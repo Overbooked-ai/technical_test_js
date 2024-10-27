@@ -1,37 +1,82 @@
-# Technical Test Instructions for Node.js/TypeScript Developer
+# Personalized Recommendations App
 
-## Objective
+## Overview
 
-Your task is to extend an existing Node.js web application by adding new features that simulate a real-world scenario. You will:
+This application provides personalized recommendations based on user preferences. It consists of a backend service that generates recommendations using a mock LLM agent and a frontend built with Next.js.
 
-- Add a new endpoint that allows users to receive personalized recommendations based on their interests.
-- Save these recommendations in a database.
-- Add another endpoint to retrieve saved recommendations for each user.
-- Integrate with a mock Large Language Model (LLM) agent using a provided Docker Compose setup.
-- Create a frontend to interact with the backend.
+## Prerequisites
 
-This task assesses your ability to integrate external services, handle HTTP requests/responses, work with databases, and write clean, maintainable code following best practices. 
-### Note: you can change any file on this project, as long as you provide a working code OR enough code that can you can explain your choices.
+Before you begin, ensure you have the following installed:
 
-## Project Overview
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [Docker](https://www.docker.com/) (for running the mock LLM agent)
+- [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/) (for package management)
 
-You are provided with a basic project structure of a web application built using Express.js and TypeScript. The application currently has a few endpoints set up. Your job is to:
-
-1. **Add a new endpoint `/recommendations`** that generates and saves personalized recommendations.
-    - Integrate with a mock LLM agent, accessible via Docker Compose, to generate recommendations.
-    - Save recommendations in a database (you'll need to add a database service to the Docker Compose file).
-  
-2. **Add another endpoint `/users/:user_id/recommendations`** to retrieve saved recommendations.
-    - Ensure proper error handling and input validation.
-
-3. **Create a frontend using React that uses those two endpoints**
-   - There is no restriction on component library or tools you use.
-   - Create it based on the mockup provided.
-
-4. **Write unit tests** for your new code.
-  
-5. **Document your work** and provide instructions on how to run the application.
-
-## How to Run the Application
+## Getting Started
 
 ### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/repo-name.git
+cd repo-name
+```
+
+### 2. Set Up the Backend
+
+#### 2.1. Start the Mock LLM Agent
+
+1. Navigate to the directory containing the `docker-compose.yml` file.
+2. Run the following command to start the mock LLM agent:
+```bash
+docker compose up wiremock -d
+```
+This will start the mock LLM agent, which will be accessible at `http://localhost:8080`.
+
+#### 2.2. Install Backend Dependencies
+
+Navigate to the backend directory (if applicable) and install the dependencies:
+```bash
+npm install
+```
+
+### 3. Set Up the Frontend
+
+#### 3.1. Install Frontend Dependencies
+
+Navigate to the frontend directory and install the dependencies:
+```bash
+cd frontend
+npm install
+```
+
+#### 3.2. Configure Environment Variables
+
+Create a `.env.local` file in the `frontend` directory and add the following line:
+```bash
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+```
+
+Make sure to replace `8000` with the port your backend is running on if it's different.
+
+### 4. Run the Application
+
+#### 4.1. Start the Backend Server
+
+If you have a separate backend server, start it:
+```bash
+npm run dev
+```
+
+#### 4.2. Start the Frontend Development Server
+
+In the `frontend` directory, run:
+```bash
+npm run dev
+```
+This will start the Next.js development server, and you can access the application at `http://localhost:3000`.
+
+### 5. Usage
+
+- Navigate to the homepage to enter a user ID and preferences.
+- Click "Generate Recommendations" to generate personalized recommendations.
+- You can also fetch recommendations for a specific user by entering their user ID.
