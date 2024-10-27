@@ -80,3 +80,13 @@ This will start the Next.js development server, and you can access the applicati
 - Navigate to the homepage to enter a user ID and preferences.
 - Click "Generate Recommendations" to generate personalized recommendations.
 - You can also fetch recommendations for a specific user by entering their user ID.
+
+
+### Note
+
+To generate recommendations you should use only predefined preferences for payload because we are using mock LLM agent for now.
+
+Here is the pre-defined payload.
+```bash
+science fiction, artificial intelligence, space exploration
+```
