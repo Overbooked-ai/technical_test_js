@@ -3,9 +3,7 @@ import axios from 'axios';
 import { RecommendationModel } from '../models/recommendation';
 
 export const generateRecommendations = async (req: Request, res: Response) => {
-  console.log('Request Headers:', req.headers);
   const { user_id, preferences } = req.body;
-  console.log('Request Body:', { user_id, preferences });
   try {
     const apiResponse = await axios.post('http://localhost:8080/llm/generate', { preferences });
     const { recommendations } = apiResponse.data;
