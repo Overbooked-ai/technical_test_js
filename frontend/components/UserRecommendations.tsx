@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
 import { Input } from '@/components/ui/input';
@@ -13,6 +12,7 @@ const UserRecommendations = () => {
 
   const handleFetch = async () => {
     setError(null);
+    setRecommendations([]);
     try {
       const response = await fetch(`/api/users/${userId}`);
       

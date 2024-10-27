@@ -16,6 +16,7 @@ const RecommendationForm = () => {
     e.preventDefault();
     const preferencesArray = preferences.split(',').map(pref => pref.trim());
     setError(null);
+    setRecommendations([]);
     try {
       const response = await fetch('/api/recommendations', {
         method: 'POST',
