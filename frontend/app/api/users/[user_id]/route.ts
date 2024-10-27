@@ -4,10 +4,6 @@ import axios from 'axios';
 export async function GET(request: Request, { params }: { params: { user_id: string } }) {
   const { user_id } = params;
 
-  console.log("ajsdjasldksajdkljkl")
-
-  console.log(user_id, "sdsadsa")
-
   try {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/${user_id}/recommendations`);
     
